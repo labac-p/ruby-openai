@@ -1,6 +1,6 @@
 RSpec.describe OpenAI::HTTP do
   describe "with an aggressive timeout" do
-    let(:timeout_errors) { [Faraday::ConnectionFailed, Faraday::TimeoutError] }
+    let(:timeout_errors) { [Paraday::ConnectionFailed, Paraday::TimeoutError] }
     let(:timeout) { 0 }
 
     # We disable VCR and WebMock for timeout specs, otherwise VCR will return instant
@@ -67,7 +67,7 @@ RSpec.describe OpenAI::HTTP do
         end
 
         it "doesn't change the parameters stream proc" do
-          expect { response }.to raise_error(Faraday::ConnectionFailed)
+          expect { response }.to raise_error(Paraday::ConnectionFailed)
 
           expect(parameters[:stream]).to eq(stream)
         end
@@ -111,10 +111,10 @@ RSpec.describe OpenAI::HTTP do
       it "raises an HTTP error" do
         VCR.use_cassette(cassette, record: :none) do
           OpenAI::Client.new.models.retrieve(id: "text-ada-001")
-        rescue Faraday::Error => e
+        rescue Paraday::Error => e
           expect(e.response).to include(status: 400)
         else
-          raise "Expected to raise Faraday::BadRequestError"
+          raise "Expected to raise Paraday::BadRequestError"
         end
       end
     end

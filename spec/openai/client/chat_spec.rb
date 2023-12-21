@@ -62,7 +62,7 @@ RSpec.describe OpenAI::Client do
           it "raises an error containing the reason" do
             VCR.use_cassette(cassette) do
               response
-            rescue Faraday::Error => e
+            rescue Paraday::Error => e
               expect(e.response.dig(:body, "error",
                                     "message")).to include("Missing parameter 'name'")
             end
@@ -124,7 +124,7 @@ RSpec.describe OpenAI::Client do
             it "raises an HTTP error with the parsed body" do
               VCR.use_cassette(cassette, record: :none) do
                 response
-              rescue Faraday::BadRequestError => e
+              rescue Paraday::BadRequestError => e
                 expect(e.response).to include(status: 400)
                 expect(e.response[:body]).to eq({
                                                   "error" => {
@@ -135,7 +135,7 @@ RSpec.describe OpenAI::Client do
                                                   }
                                                 })
               else
-                raise "Expected to raise Faraday::BadRequestError"
+                raise "Expected to raise Paraday::BadRequestError"
               end
             end
           end
@@ -146,11 +146,11 @@ RSpec.describe OpenAI::Client do
             it "raises an HTTP error" do
               VCR.use_cassette(cassette, record: :none) do
                 response
-              rescue Faraday::ServerError => e
+              rescue Paraday::ServerError => e
                 expect(e.response).to include(status: 500)
                 expect(e.response[:body]).to eq("")
               else
-                raise "Expected to raise Faraday::ServerError"
+                raise "Expected to raise Paraday::ServerError"
               end
             end
           end

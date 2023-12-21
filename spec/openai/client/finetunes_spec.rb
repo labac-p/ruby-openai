@@ -54,11 +54,11 @@ RSpec.describe OpenAI::Client do
       it "succeeds" do
         VCR.use_cassette(cassette) do
           response
-        rescue Faraday::ResourceNotFound => e
+        rescue Paraday::ResourceNotFound => e
           expect(e.response).to include(status: 404)
           expect(e.response.dig(:body, "error", "code")).to eq("fine_tune_not_found")
         else
-          raise "Expected to raise Faraday::ResourceNotFound"
+          raise "Expected to raise Paraday::ResourceNotFound"
         end
       end
     end
@@ -70,11 +70,11 @@ RSpec.describe OpenAI::Client do
       it "succeeds" do
         VCR.use_cassette(cassette) do
           response
-        rescue Faraday::ResourceNotFound => e
+        rescue Paraday::ResourceNotFound => e
           expect(e.response).to include(status: 404)
           expect(e.response.dig(:body, "error", "code")).to eq("fine_tune_not_found")
         else
-          raise "Expected to raise Faraday::ResourceNotFound"
+          raise "Expected to raise Paraday::ResourceNotFound"
         end
       end
     end
@@ -86,11 +86,11 @@ RSpec.describe OpenAI::Client do
       it "succeeds" do
         VCR.use_cassette(cassette) do
           response
-        rescue Faraday::ResourceNotFound => e
+        rescue Paraday::ResourceNotFound => e
           expect(e.response).to include(status: 404)
           expect(e.response.dig(:body, "error", "code")).to eq("fine_tune_not_found")
         else
-          raise "Expected to raise Faraday::ResourceNotFound"
+          raise "Expected to raise Paraday::ResourceNotFound"
         end
       end
     end

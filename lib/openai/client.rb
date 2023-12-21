@@ -11,15 +11,15 @@ module OpenAI
       request_timeout
       extra_headers
     ].freeze
-    attr_reader *CONFIG_KEYS, :faraday_middleware
+    attr_reader *CONFIG_KEYS, :paraday_middleware
 
-    def initialize(config = {}, &faraday_middleware)
+    def initialize(config = {}, &paraday_middleware)
       CONFIG_KEYS.each do |key|
         # Set instance variables like api_type & access_token. Fall back to global config
         # if not present.
         instance_variable_set("@#{key}", config[key] || OpenAI.configuration.send(key))
       end
-      @faraday_middleware = faraday_middleware
+      @paraday_middleware = paraday_middleware
     end
 
     def chat(parameters: {})

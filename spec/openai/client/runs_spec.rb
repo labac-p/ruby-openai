@@ -87,7 +87,7 @@ RSpec.describe OpenAI::Client do
 
       it "succeeds" do
         VCR.use_cassette(cassette) do
-          expect { response }.to raise_error(Faraday::BadRequestError)
+          expect { response }.to raise_error(Paraday::BadRequestError)
         end
       end
     end
@@ -130,7 +130,7 @@ RSpec.describe OpenAI::Client do
 
       it "succeeds" do
         VCR.use_cassette(cassette) do
-          expect { response }.to raise_error(Faraday::BadRequestError)
+          expect { response }.to raise_error(Paraday::BadRequestError)
         end
       end
     end

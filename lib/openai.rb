@@ -1,5 +1,5 @@
-require "faraday"
-require "faraday/multipart"
+require "paraday"
+require "paraday/multipart"
 
 require_relative "openai/http"
 require_relative "openai/client"
@@ -19,10 +19,10 @@ module OpenAI
   class Error < StandardError; end
   class ConfigurationError < Error; end
 
-  class MiddlewareErrors < Faraday::Middleware
+  class MiddlewareErrors < Paraday::Middleware
     def call(env)
       @app.call(env)
-    rescue Faraday::Error => e
+    rescue Paraday::Error => e
       raise e unless e.response.is_a?(Hash)
 
       logger = Logger.new($stdout)

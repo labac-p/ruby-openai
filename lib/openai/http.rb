@@ -60,7 +60,7 @@ module OpenAI
 
       proc do |chunk, _bytes, env|
         if env && env.status != 200
-          raise_error = Faraday::Response::RaiseError.new
+          raise_error = Paraday::Response::RaiseError.new
           raise_error.on_complete(env.merge(body: try_parse_json(chunk)))
         end
 
@@ -71,7 +71,7 @@ module OpenAI
     end
 
     def conn(multipart: false)
-      connection = Faraday.new do |f|
+      connection = Paraday.new do |f|
         f.options[:timeout] = @request_timeout
         f.request(:multipart) if multipart
         f.use MiddlewareErrors
@@ -79,7 +79,7 @@ module OpenAI
         f.response :json
       end
 
-      @faraday_middleware&.call(connection)
+      @paraday_middleware&.call(connection)
 
       connection
     end
@@ -100,7 +100,7 @@ module OpenAI
         # Doesn't seem like OpenAI needs mime_type yet, so not worth
         # the library to figure this out. Hence the empty string
         # as the second argument.
-        Faraday::UploadIO.new(value, "", value.path)
+        Paraday::UploadIO.new(value, "", value.path)
       end
     end
 

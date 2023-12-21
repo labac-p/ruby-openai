@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add ability to pass [Faraday middleware](https://lostisland.github.io/faraday/#/middleware/index) to the client in a block, eg. to enable verbose logging - shout out to [@obie](https://github.com/obie) for pushing for this.
+- Add ability to pass [Paraday middleware](https://lostisland.github.io/paraday/#/middleware/index) to the client in a block, eg. to enable verbose logging - shout out to [@obie](https://github.com/obie) for pushing for this.
 - Add better error logging to the client by default.
 - Bump Event Source to v1, thank you [@atesgoral](https://github.com/atesgoral) @ Shopify!
 
@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [BREAKING] HTTP errors will now be raised by ruby-openai as Faraday:Errors, including when streaming! Implemented by [@atesgoral](https://github.com/atesgoral)
+- [BREAKING] HTTP errors will now be raised by ruby-openai as Paraday:Errors, including when streaming! Implemented by [@atesgoral](https://github.com/atesgoral)
 - [BREAKING] Switch from legacy Finetunes to the new Fine-tune-jobs endpoints. Implemented by [@lancecarlson](https://github.com/lancecarlson)
 - [BREAKING] Remove deprecated Completions endpoints - use Chat instead.
 
@@ -115,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Switch HTTP library from HTTParty to Faraday to allow streaming and future feature and performance improvements.
+- Switch HTTP library from HTTParty to Paraday to allow streaming and future feature and performance improvements.
 - [BREAKING] Endpoints now return JSON rather than HTTParty objects. You will need to update your code to handle this change, changing `JSON.parse(response.body)["key"]` and `response.parsed_response["key"]` to just `response["key"]`.
 
 ## [3.7.0] - 2023-03-25

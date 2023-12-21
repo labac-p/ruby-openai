@@ -119,7 +119,7 @@ client.add_headers("X-Proxy-TTL" => "43200")
 
 #### Verbose Logging
 
-You can pass [Faraday middleware](https://lostisland.github.io/faraday/#/middleware/index) to the client in a block, eg. to enable verbose logging with Ruby's [Logger](https://ruby-doc.org/3.2.2/stdlibs/logger/Logger.html):
+You can pass [Paraday middleware](https://lostisland.github.io/paraday/#/middleware/index) to the client in a block, eg. to enable verbose logging with Ruby's [Logger](https://ruby-doc.org/3.2.2/stdlibs/logger/Logger.html):
 
 ```ruby
   client = OpenAI::Client.new do |f|
@@ -197,7 +197,7 @@ puts response.dig("choices", 0, "message", "content")
 
 [Quick guide to streaming Chat with Rails 7 and Hotwire](https://gist.github.com/alexrudall/cb5ee1e109353ef358adb4e66631799d)
 
-You can stream from the API in realtime, which can be much faster and used to create a more engaging user experience. Pass a [Proc](https://ruby-doc.org/core-2.6/Proc.html) (or any object with a `#call` method) to the `stream` parameter to receive the stream of completion chunks as they are generated. Each time one or more chunks is received, the proc will be called once with each chunk, parsed as a Hash. If OpenAI returns an error, `ruby-openai` will raise a Faraday error.
+You can stream from the API in realtime, which can be much faster and used to create a more engaging user experience. Pass a [Proc](https://ruby-doc.org/core-2.6/Proc.html) (or any object with a `#call` method) to the `stream` parameter to receive the stream of completion chunks as they are generated. Each time one or more chunks is received, the proc will be called once with each chunk, parsed as a Hash. If OpenAI returns an error, `ruby-openai` will raise a Paraday error.
 
 ```ruby
 client.chat(
@@ -762,8 +762,8 @@ HTTP errors can be caught like this:
 ```
   begin
     OpenAI::Client.new.models.retrieve(id: "text-ada-001")
-  rescue Faraday::Error => e
-    raise "Got a Faraday error: #{e}"
+  rescue Paraday::Error => e
+    raise "Got a Paraday error: #{e}"
   end
 ```
 

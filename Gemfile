@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+source "https://rubygems.pkg.github.com/labac-p"
 
 # Include gem dependencies from ruby-openai.gemspec
 gemspec
